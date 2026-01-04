@@ -1,4 +1,4 @@
-package com.portal.api.service;
+package com.portal.api.service.car;
 
 import com.portal.api.client.CarPostStoreClient;
 import com.portal.api.dto.CarPostDTO;
