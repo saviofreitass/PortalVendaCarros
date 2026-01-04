@@ -1,7 +1,7 @@
-package com.portal.api.controller;
+package com.portal.api.controller.car;
 
 
-import com.portal.api.dto.CarPostDTO;
+import com.portal.api.dto.car.CarPostDTO;
 import com.portal.api.service.car.CarPostStoreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

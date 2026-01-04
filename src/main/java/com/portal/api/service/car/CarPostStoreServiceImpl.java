@@ -1,7 +1,7 @@
 package com.portal.api.service.car;
 
 import com.portal.api.client.CarPostStoreClient;
-import com.portal.api.dto.CarPostDTO;
+import com.portal.api.dto.car.CarPostDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
