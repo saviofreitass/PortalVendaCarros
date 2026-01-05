@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/owner")
 public class OwnerPostController {
 
     private final OwnerPostService ownerPostService;
+
+    public OwnerPostController(OwnerPostService ownerPostService) {
+        this.ownerPostService = ownerPostService;
+    }
 
     @PostMapping
     public ResponseEntity createOwnerCar(@RequestBody OwnerPostDTO ownerPostDTO) {

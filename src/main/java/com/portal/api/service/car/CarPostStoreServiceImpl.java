@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class CarPostStoreServiceImpl implements CarPostStoreService {
 
     private final CarPostStoreClient carPostStoreClient;
+
+    public CarPostStoreServiceImpl(CarPostStoreClient carPostStoreClient) {
+        this.carPostStoreClient = carPostStoreClient;
+    }
 
     @Override
     public List<CarPostDTO> getCarForSale() {

@@ -21,11 +21,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/car")
-@RequiredArgsConstructor
 public class CarPostController {
 
     private final CarPostStoreService carPostStoreService;
     private final KafkaProducerMessage kafkaProducerMessage;
+
+    public CarPostController(CarPostStoreService carPostStoreService,
+                             KafkaProducerMessage kafkaProducerMessage) {
+        this.carPostStoreService = carPostStoreService;
+        this.kafkaProducerMessage = kafkaProducerMessage;
+    }
 
     @PostMapping("/post")
     public ResponseEntity postCarForSale(@RequestBody CarPostDTO carPostDTO){

@@ -6,10 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class OwnerPostServiceImpl implements OwnerPostService {
 
     private final CarPostStoreClient carPostStoreClient;
+
+    public OwnerPostServiceImpl(CarPostStoreClient carPostStoreClient) {
+        this.carPostStoreClient = carPostStoreClient;
+    }
 
     @Override
     public void createOwnerCar(OwnerPostDTO ownerPostDTO) {
