@@ -2,6 +2,8 @@ package com.portal.api.controller.car;
 
 
 import com.portal.api.dto.car.CarPostDTO;
+import com.portal.api.message.KafkaProducerConfiguration;
+import com.portal.api.message.KafkaProducerMessage;
 import com.portal.api.service.car.CarPostStoreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,13 @@ import java.util.List;
 public class CarPostController {
 
     private final CarPostStoreService carPostStoreService;
+    private final KafkaProducerMessage kafkaProducerMessage;
+
+    @PostMapping("/post")
+    public ResponseEntity postCarForSale(@RequestBody CarPostDTO carPostDTO){
+        kafkaProducerMessage.sendMessage(carPostDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @GetMapping("/posts")
     public ResponseEntity<List<CarPostDTO>> getCarSales(){
